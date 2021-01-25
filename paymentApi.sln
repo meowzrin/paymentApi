@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "paymentApi", "paymentApi\paymentApi.csproj", "{F5B0B60E-9CBF-497C-A398-9F1B9B513B33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "paymentApiTest", "paymentApiTest\paymentApiTest.csproj", "{FD7997BC-0D4E-44FB-8365-7418127EC6A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5B0B60E-9CBF-497C-A398-9F1B9B513B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B0B60E-9CBF-497C-A398-9F1B9B513B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B0B60E-9CBF-497C-A398-9F1B9B513B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B0B60E-9CBF-497C-A398-9F1B9B513B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7997BC-0D4E-44FB-8365-7418127EC6A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7997BC-0D4E-44FB-8365-7418127EC6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7997BC-0D4E-44FB-8365-7418127EC6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7997BC-0D4E-44FB-8365-7418127EC6A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E92E4C2-FCDD-4AB9-AB50-8366FF84E3BD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Text;
+
+namespace paymentApiTest
+{
+    public partial class sample: Component
+    {    
+        public sample()
+        {
+            InitializeComponent();
+        }
+
+        public sample(IContainer container)
+        {
+            container.Add(this);
+
+            InitializeComponent();
+        }
+    }
+}
