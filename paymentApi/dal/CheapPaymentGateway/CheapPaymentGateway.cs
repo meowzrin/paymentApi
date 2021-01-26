@@ -15,11 +15,16 @@ namespace paymentApi.dal.CheapPaymentGateway
         {
             //_clientFactory = clientFactory;
         }
-        
 
-        public Task<PaymentResponse> processPayment(PaymentData paymentInfo)
+
+        public PaymentResponse processPayment(PaymentData paymentInfo)
         {
-            throw new NotImplementedException();
+
+            // Connect to external service to process payment
+            PaymentResponse responseData = new PaymentResponse();
+            responseData.Status = "Success";
+            return responseData;
+
         }
     }
 }

@@ -28,18 +28,15 @@ namespace paymentApi.bl
 
             if (paymentInfo.amount < 20)
             {
-                response = await _cheapPaymentGateway.processPayment(paymentInfo);
-                if (response.Status == "Fail")
-                {
-                    throw new Exception();
-                }
+                response =  _cheapPaymentGateway.processPayment(paymentInfo);
+                
             }
             else if (paymentInfo.amount > 20 && paymentInfo.amount < 500)
             {
-                response = await _cheapPaymentGateway.processPayment(paymentInfo);
+                response =  _cheapPaymentGateway.processPayment(paymentInfo);
                 if(response.Status=="Fail")
                 {
-                    response = await _expensivePaymentGateway.processPayment(paymentInfo);
+                    response =  _expensivePaymentGateway.processPayment(paymentInfo);
            
                 }
                     
@@ -48,10 +45,10 @@ namespace paymentApi.bl
             else
             {
 
-                response = await _expensivePaymentGateway.processPayment(paymentInfo);
+                response =  _expensivePaymentGateway.processPayment(paymentInfo);
                 while (response.Status == "Fail" && retryAttempts <= 3)
                 {
-                    response = await _expensivePaymentGateway.processPayment(paymentInfo);
+                    response =  _expensivePaymentGateway.processPayment(paymentInfo);
                     retryAttempts++;
                 }
 

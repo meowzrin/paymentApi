@@ -13,6 +13,7 @@ namespace paymentApi.domain
         private string _cardHolder;
         private DateTime _expirationDate;
         private float _amount;
+        private int? _securityCode;
         public string creditCardNumber
         {
             get
@@ -21,8 +22,13 @@ namespace paymentApi.domain
             }
 
             set
+            
             {
-                this._creditCardNumber = /*!isValid(Convert.ToInt64(value)) ? throw new Exception("Credit Card Numberis is invalid") : */value;
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("Credit Card number is mandatory");
+                }
+                this._creditCardNumber = !isValid(Convert.ToInt64(value)) ? throw new ArgumentException("Credit Card Numberis is invalid") : value;
 
             }
         }
@@ -35,6 +41,10 @@ namespace paymentApi.domain
 
             set
             {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("CardHolderis mandatory");
+                }
                 this._cardHolder = value;
             }
         }
@@ -47,10 +57,20 @@ namespace paymentApi.domain
 
             set
             {
-                    this._expirationDate = value < DateTime.Now? throw new Exception("The credit card has passed the expiration data"):value;
+                this._expirationDate = value < DateTime.Now? throw new Exception("The credit card has passed the expiration data"):value;
             }
         }
-        public int? securityCode { get; set; }
+        public int? securityCode 
+        {
+            get
+            {
+                return this._securityCode;
+            }
+            set
+            {
+                this._securityCode = value.ToString().Length == 3 ||  value ==null ? value : throw new ArgumentException("Security Code is invalid");
+            }
+        }
 
         public float amount
         {
@@ -60,7 +80,7 @@ namespace paymentApi.domain
             }
             set
             {
-                this._amount = value <= 0 ? throw new Exception("Amount should be a postive value") : value;
+                this._amount = value <= 0 ? throw new ArgumentException("Amount should be a postive value") : value;
             }
         }
         public static bool isValid(long number)

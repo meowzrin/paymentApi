@@ -11,8 +11,6 @@ namespace paymentApi.Controllers
     [Route("[controller]")]
     public class paymentController : ControllerBase
     {
-
-
         private readonly ILogger<paymentController> _logger;
         private readonly IPaymentBl _paymentBl;
 
@@ -21,32 +19,18 @@ namespace paymentApi.Controllers
             _logger = logger;
             _paymentBl = paymentBl;
         }
-        
-        //[Route("ccn/{ccn}/cardHolder/{cardHolder}/expirationDate/{expirationDate}/amount/{amount}")]
+
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(PaymentResponse))]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<PaymentResponse>> ProcessPayment()
+        public async Task<ActionResult<PaymentResponse>> ProcessPayment([FromQuery] PaymentData paymentData)
         {
-            
-            PaymentResponse paymentResponse = new PaymentResponse();
-            PaymentData paymentData = new PaymentData
-            {
-                creditCardNumber = "7877845318451",
-                cardHolder = "Tree",
-                expirationDate = Convert.ToDateTime("24-07-2021"),
-                amount=0
-            };
-            if (ModelState.IsValid)
-            {
-                paymentResponse = await _paymentBl.processData(paymentData);
-            }
-            else
-            {
-                paymentResponse.Status = "Invalid Data";
-            }
 
-                return paymentResponse;
+            PaymentResponse paymentResponse = new PaymentResponse();
+
+            paymentResponse = await _paymentBl.processData(paymentData);
+
+            return Ok(paymentResponse);
         }
 
     }

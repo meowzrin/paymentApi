@@ -7,18 +7,21 @@ using System.Threading.Tasks;
 
 namespace paymentApi.dal.ExpensivePaymentGateway
 {
-    public class ExpensivePaymentGateway: IExpensivePaymentGateway
+    public class ExpensivePaymentGateway : IExpensivePaymentGateway
     {
-           //private readonly IHttpClientFactory _clientFactory;
+        //private readonly IHttpClientFactory _clientFactory;
 
         public ExpensivePaymentGateway(/*IHttpClientFactory clientFactory*/)
         {
             //_clientFactory = clientFactory;
         }
 
-        public Task<PaymentResponse> processPayment(PaymentData paymentInfo)
+        public PaymentResponse processPayment(PaymentData paymentInfo)
         {
-            throw new NotImplementedException();
+            // Connect to external service to process payment
+            PaymentResponse responseData = new PaymentResponse();
+            responseData.Status = "Success";
+            return responseData;
         }
     }
 }

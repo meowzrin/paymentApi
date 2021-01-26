@@ -8,6 +8,6 @@ namespace paymentApi.dal.CheapPaymentGateway
 {
     public interface ICheapPaymentGateway
     {
-        Task<PaymentResponse> processPayment(PaymentData paymentInfo);
+        PaymentResponse processPayment(PaymentData paymentInfo);
     }
 }
